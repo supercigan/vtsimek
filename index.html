@@ -515,55 +515,97 @@
     /* ─── GALLERY ─── */
     .gallery__grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: 200px 200px;
-      gap: 0.75rem;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.6rem;
     }
     .gallery__item {
       border-radius: var(--radius);
       overflow: hidden;
       position: relative;
       cursor: pointer;
+      aspect-ratio: 1;
+      background: #0a3030;
     }
-    .gallery__item:first-child { grid-column: span 2; grid-row: span 2; }
-    .gallery__item:nth-child(2) { grid-column: span 2; }
-    .gallery__thumb {
+    .gallery__item img {
       width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
       transition: transform .4s ease;
     }
-    .gallery__item:hover .gallery__thumb { transform: scale(1.06); }
+    .gallery__item:hover img { transform: scale(1.08); }
     .gallery__overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(12,61,61,.7) 0%, transparent 60%);
+      background: rgba(12,61,61,.55);
       opacity: 0;
       transition: opacity .3s;
       display: flex;
-      align-items: flex-end;
-      padding: 1rem;
+      align-items: center;
+      justify-content: center;
     }
     .gallery__item:hover .gallery__overlay { opacity: 1; }
-    .gallery__overlay span {
+    .gallery__zoom {
+      font-size: 2rem;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,.4));
+    }
+
+    /* ─── LIGHTBOX ─── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.92);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox__img {
+      max-width: 90vw;
+      max-height: 88vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 8px 60px rgba(0,0,0,.6);
+    }
+    .lightbox__close {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+      background: none;
+      border: none;
+      line-height: 1;
+      min-height: 44px; min-width: 44px;
+      display: flex; align-items: center; justify-content: center;
+      opacity: .7;
+      transition: opacity .2s;
+    }
+    .lightbox__close:hover { opacity: 1; }
+    .lightbox__prev, .lightbox__next {
+      position: absolute;
+      top: 50%; transform: translateY(-50%);
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+      background: rgba(255,255,255,.1);
+      border: none;
+      border-radius: 8px;
+      min-height: 54px; min-width: 44px;
+      display: flex; align-items: center; justify-content: center;
+      opacity: .7;
+      transition: opacity .2s, background .2s;
+    }
+    .lightbox__prev:hover, .lightbox__next:hover { opacity: 1; background: rgba(255,255,255,.2); }
+    .lightbox__prev { left: 1rem; }
+    .lightbox__next { right: 1rem; }
+    .lightbox__counter {
+      position: absolute;
+      bottom: 1rem; left: 50%; transform: translateX(-50%);
+      color: rgba(255,255,255,.6);
       font-family: 'Urbanist', sans-serif;
       font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--white);
     }
-    /* Placeholder backgrounds for gallery */
-    .gallery__thumb { background: linear-gradient(135deg, #0C3D3D, #0a4a4a); }
-    .g1 { background: linear-gradient(135deg, #0C3D3D 0%, #18A8B8 100%); }
-    .g2 { background: linear-gradient(135deg, #0d3838 0%, #0a3030 100%); }
-    .g3 { background: linear-gradient(135deg, #E8A020 0%, #fbbf24 100%); }
-    .g4 { background: linear-gradient(135deg, #18A8B8 0%, #0d8a9a 100%); }
-    .g5 { background: linear-gradient(135deg, #0a3030 0%, #18A8B8 80%); }
-
-    .gallery__icon {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%,-50%);
-      opacity: .2;
-    }
-    .gallery__icon svg { width: 48px; height: 48px; color: white; }
 
     /* ─── CONTACT ─── */
     .contact__inner {
@@ -725,9 +767,7 @@
     @media (max-width: 1024px) {
       .hero__visual { display: none; }
       .why__grid { grid-template-columns: repeat(2, 1fr); }
-      .gallery__grid { grid-template-columns: repeat(3, 1fr); }
-      .gallery__item:first-child { grid-column: span 2; }
-      .gallery__item:nth-child(2) { grid-column: span 1; }
+      .gallery__grid { grid-template-columns: repeat(4, 1fr); }
     }
 
     @media (max-width: 768px) {
@@ -737,13 +777,7 @@
       .about__badge-float { right: 0; bottom: -0.75rem; }
       .contact__inner { grid-template-columns: 1fr; }
       .footer__inner { grid-template-columns: 1fr 1fr; }
-      .gallery__grid {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: auto;
-      }
-      .gallery__item:first-child { grid-column: span 2; grid-row: span 1; height: 220px; }
-      .gallery__item:nth-child(2) { grid-column: span 2; height: 180px; }
-      .gallery__item { height: 160px; }
+      .gallery__grid { grid-template-columns: repeat(3, 1fr); }
     }
 
     @media (max-width: 640px) {
@@ -769,13 +803,7 @@
       .why-card { padding: 1.5rem 1rem; }
 
       /* Gallery */
-      .gallery__grid {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto;
-      }
-      .gallery__item:first-child { grid-column: span 2; height: 200px; grid-row: span 1; }
-      .gallery__item:nth-child(2) { grid-column: span 2; height: 160px; }
-      .gallery__item { height: 140px; }
+      .gallery__grid { grid-template-columns: repeat(2, 1fr); }
 
       /* Contact form */
       .form-grid { grid-template-columns: 1fr; }
@@ -1077,31 +1105,26 @@
       <h2 class="section-title fade-up d1">Ukázky realizací</h2>
       <p class="section-intro fade-up d2">Každá zakázka je pro nás závazek. Prohlédněte si výběr z našich dokončených projektů.</p>
       <div class="gallery__grid fade-up d3">
-        <div class="gallery__item">
-          <div class="gallery__thumb g1"></div>
-          <div class="gallery__icon" style="font-size:3rem">🔥</div>
-          <div class="gallery__overlay"><span>Instalace vytápění</span></div>
-        </div>
-        <div class="gallery__item">
-          <div class="gallery__thumb g2"></div>
-          <div class="gallery__icon" style="font-size:3rem">🪣</div>
-          <div class="gallery__overlay"><span>Čištění kanalizace</span></div>
-        </div>
-        <div class="gallery__item">
-          <div class="gallery__thumb g3"></div>
-          <div class="gallery__icon" style="font-size:3rem">☀️</div>
-          <div class="gallery__overlay"><span>Solární panely</span></div>
-        </div>
-        <div class="gallery__item">
-          <div class="gallery__thumb g4"></div>
-          <div class="gallery__icon" style="font-size:3rem">♻️</div>
-          <div class="gallery__overlay"><span>Tepelné čerpadlo</span></div>
-        </div>
-        <div class="gallery__item">
-          <div class="gallery__thumb g5"></div>
-          <div class="gallery__icon" style="font-size:3rem">🔧</div>
-          <div class="gallery__overlay"><span>Plynoinstalace</span></div>
-        </div>
+        <div class="gallery__item" data-src="photos/foto-1.png"><img src="photos/foto-1.png" alt="Realizace VT Šimek – foto 1" loading="lazy"><div class="gallery__overlay"><span class="gallery__zoom">🔍</span></div></div>
+        <div class="gallery__item" data-src="photos/foto-2.jpeg"><img src="photos/foto-2.jpeg" alt="Realizace VT Šimek – foto 2" loading="lazy"><div class="gallery__overlay"><span class="gallery__zoom">🔍</span></div></div>
+        <div class="gallery__item" data-src="photos/foto-3.jpeg"><img src="photos/foto-3.jpeg" alt="Realizace VT Šimek – foto 3" loading="lazy"><div class="gallery__overlay"><span class="gallery__zoom">🔍</span></div></div>
+        <div class="gallery__item" data-src="photos/foto-5.jpeg"><img src="photos/foto-5.jpeg" alt="Realizace VT Šimek – foto 4" loading="lazy"><div class="gallery__overlay"><span class="gallery__zoom">🔍</span></div></div>
+        <div class="gallery__item" data-src="photos/foto-6.jpeg"><img src="photos/foto-6.jpeg" alt="Realizace VT Šimek – foto 5" loading="lazy"><div class="gallery__overlay"><span class="gallery__zoom">🔍</span></div></div>
+        <div class="gallery__item" data-src="photos/foto-7.jpeg"><img src="photos/foto-7.jpeg" alt="Realizace VT Šimek – foto 6" loading="lazy"><div class="gallery__overlay"><span class="gallery__zoom">🔍</span></div></div>
+        <div class="gallery__item" data-src="photos/foto-8.jpeg"><img src="photos/foto-8.jpeg" alt="Realizace VT Šimek – foto 7" loading="lazy"><div class="gallery__overlay"><span class="gallery__zoom">🔍</span></div></div>
+        <div class="gallery__item" data-src="photos/foto-9.jpeg"><img src="photos/foto-9.jpeg" alt="Realizace VT Šimek – foto 8" loading="lazy"><div class="gallery__overlay"><span class="gallery__zoom">🔍</span></div></div>
+        <div class="gallery__item" data-src="photos/foto-10.jpeg"><img src="photos/foto-10.jpeg" alt="Realizace VT Šimek – foto 9" loading="lazy"><div class="gallery__overlay"><span class="gallery__zoom">🔍</span></div></div>
+        <div class="gallery__item" data-src="photos/foto-11.png"><img src="photos/foto-11.png" alt="Realizace VT Šimek – foto 10" loading="lazy"><div class="gallery__overlay"><span class="gallery__zoom">🔍</span></div></div>
+        <div class="gallery__item" data-src="photos/foto-12.png"><img src="photos/foto-12.png" alt="Realizace VT Šimek – foto 11" loading="lazy"><div class="gallery__overlay"><span class="gallery__zoom">🔍</span></div></div>
+        <div class="gallery__item" data-src="photos/foto-13.png"><img src="photos/foto-13.png" alt="Realizace VT Šimek – foto 12" loading="lazy"><div class="gallery__overlay"><span class="gallery__zoom">🔍</span></div></div>
+        <div class="gallery__item" data-src="photos/foto-14.png"><img src="photos/foto-14.png" alt="Realizace VT Šimek – foto 13" loading="lazy"><div class="gallery__overlay"><span class="gallery__zoom">🔍</span></div></div>
+        <div class="gallery__item" data-src="photos/foto-15.png"><img src="photos/foto-15.png" alt="Realizace VT Šimek – foto 14" loading="lazy"><div class="gallery__overlay"><span class="gallery__zoom">🔍</span></div></div>
+        <div class="gallery__item" data-src="photos/foto-16.png"><img src="photos/foto-16.png" alt="Realizace VT Šimek – foto 15" loading="lazy"><div class="gallery__overlay"><span class="gallery__zoom">🔍</span></div></div>
+        <div class="gallery__item" data-src="photos/foto-17.png"><img src="photos/foto-17.png" alt="Realizace VT Šimek – foto 16" loading="lazy"><div class="gallery__overlay"><span class="gallery__zoom">🔍</span></div></div>
+        <div class="gallery__item" data-src="photos/foto-18.png"><img src="photos/foto-18.png" alt="Realizace VT Šimek – foto 17" loading="lazy"><div class="gallery__overlay"><span class="gallery__zoom">🔍</span></div></div>
+        <div class="gallery__item" data-src="photos/foto-19.png"><img src="photos/foto-19.png" alt="Realizace VT Šimek – foto 18" loading="lazy"><div class="gallery__overlay"><span class="gallery__zoom">🔍</span></div></div>
+        <div class="gallery__item" data-src="photos/foto-20.png"><img src="photos/foto-20.png" alt="Realizace VT Šimek – foto 19" loading="lazy"><div class="gallery__overlay"><span class="gallery__zoom">🔍</span></div></div>
+        <div class="gallery__item" data-src="photos/foto-21.png"><img src="photos/foto-21.png" alt="Realizace VT Šimek – foto 20" loading="lazy"><div class="gallery__overlay"><span class="gallery__zoom">🔍</span></div></div>
       </div>
     </div>
   </section>
@@ -1246,6 +1269,15 @@
     </div>
   </footer>
 
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-label="Fotogalerie">
+    <button class="lightbox__close" id="lbClose" aria-label="Zavřít">✕</button>
+    <button class="lightbox__prev" id="lbPrev" aria-label="Předchozí">‹</button>
+    <img class="lightbox__img" id="lbImg" src="" alt="">
+    <button class="lightbox__next" id="lbNext" aria-label="Další">›</button>
+    <div class="lightbox__counter" id="lbCounter"></div>
+  </div>
+
   <!-- Scroll to top -->
   <button class="scroll-top" id="scrollTop" aria-label="Nahoru">
     <svg fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
@@ -1319,6 +1351,41 @@
         btn.style.borderColor = '';
         this.reset();
       }, 3000);
+    });
+
+    // ── Lightbox ──
+    const lightbox = document.getElementById('lightbox');
+    const lbImg    = document.getElementById('lbImg');
+    const lbCounter = document.getElementById('lbCounter');
+    const galleryItems = Array.from(document.querySelectorAll('.gallery__item'));
+    let currentIdx = 0;
+
+    function openLightbox(idx) {
+      currentIdx = idx;
+      lbImg.src = galleryItems[idx].dataset.src;
+      lbImg.alt = galleryItems[idx].querySelector('img').alt;
+      lbCounter.textContent = (idx + 1) + ' / ' + galleryItems.length;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      lbImg.src = '';
+      document.body.style.overflow = '';
+    }
+    function showNext() { openLightbox((currentIdx + 1) % galleryItems.length); }
+    function showPrev() { openLightbox((currentIdx - 1 + galleryItems.length) % galleryItems.length); }
+
+    galleryItems.forEach((item, i) => item.addEventListener('click', () => openLightbox(i)));
+    document.getElementById('lbClose').addEventListener('click', closeLightbox);
+    document.getElementById('lbNext').addEventListener('click', showNext);
+    document.getElementById('lbPrev').addEventListener('click', showPrev);
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'ArrowRight') showNext();
+      if (e.key === 'ArrowLeft')  showPrev();
+      if (e.key === 'Escape')     closeLightbox();
     });
   </script>
 </body>
