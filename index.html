@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vodo-Topo Šimek | Instalatérství, vytápění, čištění kanalizace – Uherské Hradiště</title>
+  <meta name="description" content="Profesionální instalatérství, vytápění, plynoinstalace a čištění kanalizace v Uherském Hradišti. David Šimek – na trhu od roku 2018. Tel: +420 737 789 088">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ─── RESET & BASE ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      color: #1C1C2E;
+      background: #fff;
+      overflow-x: hidden;
+      line-height: 1.65;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ─── VARIABLES ─── */
+    :root {
+      --navy:   #1A3152;
+      --orange: #F26419;
+      --blue:   #3B9FD1;
+      --light:  #F4F6F8;
+      --dark:   #1C1C2E;
+      --muted:  #6B7280;
+      --white:  #ffffff;
+      --radius: 12px;
+      --shadow: 0 4px 24px rgba(26,49,82,.10);
+    }
+
+    /* ─── TYPOGRAPHY ─── */
+    h1,h2,h3,h4 { font-family: 'Urbanist', sans-serif; line-height: 1.18; color: var(--navy); }
+    h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 800; }
+    h2 { font-size: clamp(1.7rem, 3.5vw, 2.6rem); font-weight: 800; }
+    h3 { font-size: 1.2rem; font-weight: 700; }
+    p  { color: #444; font-size: 1rem; }
+
+    /* ─── LAYOUT ─── */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 1.5rem; }
+    .section    { padding: 5rem 0; }
+    .section--light { background: var(--light); }
+    .section--dark  { background: var(--navy); }
+
+    .section-label {
+      display: inline-block;
+      font-family: 'Urbanist', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.75rem;
+    }
+    .section-title { margin-bottom: 1rem; }
+    .section-intro { font-size: 1.05rem; color: var(--muted); max-width: 600px; margin-bottom: 3rem; }
+
+    /* ─── BUTTONS ─── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-family: 'Urbanist', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 0.85rem 1.9rem;
+      border-radius: 8px;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all .25s ease;
+      min-height: 44px;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--orange);
+      color: var(--white);
+      border-color: var(--orange);
+    }
+    .btn-primary:hover { background: #d4540e; border-color: #d4540e; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(242,100,25,.35); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border-color: rgba(255,255,255,.6);
+    }
+    .btn-outline:hover { background: rgba(255,255,255,.12); border-color: var(--white); }
+
+    /* ─── NAV ─── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(26,49,82,.97);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      transition: box-shadow .3s;
+    }
+    .nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,.25); }
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+    .nav__logo {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    .nav__logo-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--orange);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .nav__logo-icon svg { width: 22px; height: 22px; }
+    .nav__logo-text {
+      font-family: 'Urbanist', sans-serif;
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+    .nav__logo-sub {
+      font-size: 0.68rem;
+      color: rgba(255,255,255,.5);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      display: block;
+      margin-top: -4px;
+    }
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav__links a {
+      font-family: 'Urbanist', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: rgba(255,255,255,.75);
+      letter-spacing: 0.02em;
+      transition: color .2s;
+    }
+    .nav__links a:hover { color: var(--white); }
+    .nav__cta {
+      background: var(--orange);
+      color: var(--white) !important;
+      padding: 0.55rem 1.2rem;
+      border-radius: 7px;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+    }
+    .nav__cta:hover { background: #d4540e !important; }
+
+    /* Hamburger */
+    .nav__hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      background: none;
+      border: none;
+      min-height: 44px;
+      min-width: 44px;
+      justify-content: center;
+      align-items: center;
+    }
+    .nav__hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all .3s;
+    }
+    .nav__hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav__hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav__hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav__mobile {
+      display: none;
+      background: var(--navy);
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    .nav__mobile.open { display: block; }
+    .nav__mobile ul {
+      list-style: none;
+      padding: 1rem 1.5rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .nav__mobile a {
+      display: block;
+      padding: 0.7rem 0.5rem;
+      font-family: 'Urbanist', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: rgba(255,255,255,.8);
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+    }
+    .nav__mobile a:hover { color: var(--white); }
+    .nav__mobile .btn-primary { margin-top: 0.75rem; width: 100%; justify-content: center; }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      padding-top: 68px;
+      background: var(--navy);
+      overflow: hidden;
+    }
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 40%, rgba(59,159,209,.18) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 40% at 20% 80%, rgba(242,100,25,.12) 0%, transparent 60%);
+    }
+    .hero__grid-lines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero__content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+    }
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(242,100,25,.15);
+      border: 1px solid rgba(242,100,25,.35);
+      color: #ffaa78;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.35rem 0.9rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+      font-family: 'Urbanist', sans-serif;
+      letter-spacing: 0.05em;
+    }
+    .hero__badge::before {
+      content: '';
+      width: 7px; height: 7px;
+      background: var(--orange);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50%      { opacity:.4; transform:scale(1.4); }
+    }
+    .hero h1 { color: var(--white); margin-bottom: 1.25rem; }
+    .hero h1 span { color: var(--orange); }
+    .hero__sub {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,.7);
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    .hero__stats {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,.1);
+      padding-top: 2rem;
+    }
+    .hero__stat-num {
+      font-family: 'Urbanist', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+    }
+    .hero__stat-num span { color: var(--orange); }
+    .hero__stat-label {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,.5);
+      margin-top: 0.25rem;
+    }
+    .hero__visual {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 42%;
+      max-width: 480px;
+      padding-top: 68px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding-right: 1.5rem;
+      z-index: 1;
+    }
+    .hero__card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      backdrop-filter: blur(8px);
+      transition: transform .3s, background .3s;
+    }
+    .hero__card:hover { background: rgba(255,255,255,.1); transform: translateX(-4px); }
+    .hero__card-icon {
+      width: 44px; height: 44px;
+      background: rgba(242,100,25,.2);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .hero__card-icon svg { width: 22px; height: 22px; color: var(--orange); }
+    .hero__card-title {
+      font-family: 'Urbanist', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .hero__card-sub {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,.5);
+    }
+
+    /* ─── SERVICES ─── */
+    .services__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    .service-card {
+      background: var(--white);
+      border: 1px solid #E8EDF2;
+      border-radius: var(--radius);
+      padding: 1.75rem 1.5rem;
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--orange);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .3s;
+    }
+    .service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: #d0dce8; }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card__icon {
+      width: 52px; height: 52px;
+      background: rgba(59,159,209,.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.1rem;
+    }
+    .service-card__icon svg { width: 26px; height: 26px; color: var(--blue); }
+    .service-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+    .service-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+
+    /* ─── ABOUT ─── */
+    .about__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .about__visual {
+      position: relative;
+    }
+    .about__img-wrap {
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #1A3152 0%, #3B9FD1 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .about__img-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      color: rgba(255,255,255,.6);
+    }
+    .about__img-placeholder svg { width: 64px; height: 64px; opacity: .7; }
+    .about__img-placeholder span { font-family: 'Urbanist', sans-serif; font-size: 0.9rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .about__badge-float {
+      position: absolute;
+      bottom: -1rem;
+      right: -1rem;
+      background: var(--orange);
+      color: var(--white);
+      border-radius: var(--radius);
+      padding: 1.1rem 1.4rem;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(242,100,25,.4);
+    }
+    .about__badge-num {
+      font-family: 'Urbanist', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .about__badge-label {
+      font-size: 0.78rem;
+      opacity: .85;
+      margin-top: 0.2rem;
+    }
+    .about__text .section-title { text-align: left; }
+    .about__text p { margin-bottom: 1rem; }
+    .about__list {
+      list-style: none;
+      margin: 1.5rem 0 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+    .about__list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      font-size: 0.95rem;
+      color: #444;
+    }
+    .about__list li::before {
+      content: '';
+      width: 20px; height: 20px;
+      min-width: 20px;
+      background: rgba(59,159,209,.15);
+      border-radius: 50%;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233B9FD1' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+      background-size: 12px;
+      background-repeat: no-repeat;
+      background-position: center;
+      margin-top: 2px;
+    }
+
+    /* ─── WHY US ─── */
+    .why__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+    .why-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: background .25s, transform .25s;
+    }
+    .why-card:hover { background: rgba(255,255,255,.1); transform: translateY(-4px); }
+    .why-card__num {
+      font-family: 'Urbanist', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: rgba(59,159,209,.25);
+      line-height: 1;
+      margin-bottom: 0.75rem;
+    }
+    .why-card__icon {
+      width: 56px; height: 56px;
+      background: rgba(242,100,25,.15);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.1rem;
+    }
+    .why-card__icon svg { width: 28px; height: 28px; color: var(--orange); }
+    .why-card h3 { color: var(--white); font-size: 1.05rem; margin-bottom: 0.5rem; }
+    .why-card p  { color: rgba(255,255,255,.55); font-size: 0.88rem; }
+
+    /* ─── GALLERY ─── */
+    .gallery__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 200px 200px;
+      gap: 0.75rem;
+    }
+    .gallery__item {
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+    .gallery__item:first-child { grid-column: span 2; grid-row: span 2; }
+    .gallery__item:nth-child(2) { grid-column: span 2; }
+    .gallery__thumb {
+      width: 100%; height: 100%;
+      transition: transform .4s ease;
+    }
+    .gallery__item:hover .gallery__thumb { transform: scale(1.06); }
+    .gallery__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(26,49,82,.7) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity .3s;
+      display: flex;
+      align-items: flex-end;
+      padding: 1rem;
+    }
+    .gallery__item:hover .gallery__overlay { opacity: 1; }
+    .gallery__overlay span {
+      font-family: 'Urbanist', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+    /* Placeholder backgrounds for gallery */
+    .gallery__thumb { background: linear-gradient(135deg, #1A3152, #2d5a8e); }
+    .g1 { background: linear-gradient(135deg, #1A3152 0%, #3B9FD1 100%); }
+    .g2 { background: linear-gradient(135deg, #2a4a6e 0%, #1e3a5f 100%); }
+    .g3 { background: linear-gradient(135deg, #F26419 0%, #f5823a 100%); }
+    .g4 { background: linear-gradient(135deg, #3B9FD1 0%, #2988b8 100%); }
+    .g5 { background: linear-gradient(135deg, #1e3a5f 0%, #3B9FD1 80%); }
+
+    .gallery__icon {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      opacity: .2;
+    }
+    .gallery__icon svg { width: 48px; height: 48px; color: white; }
+
+    /* ─── CONTACT ─── */
+    .contact__inner {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .contact__info h2 { margin-bottom: 0.75rem; }
+    .contact__info > p { color: var(--muted); margin-bottom: 2rem; }
+    .contact__items { display: flex; flex-direction: column; gap: 1rem; }
+    .contact__item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .contact__item-icon {
+      width: 46px; height: 46px;
+      min-width: 46px;
+      background: var(--navy);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .contact__item-icon svg { width: 20px; height: 20px; color: var(--orange); }
+    .contact__item-label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+    }
+    .contact__item-val {
+      font-family: 'Urbanist', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--dark);
+    }
+    .contact__item-val a { color: var(--navy); transition: color .2s; }
+    .contact__item-val a:hover { color: var(--orange); }
+
+    /* Form */
+    .contact__form {
+      background: var(--white);
+      border: 1px solid #E8EDF2;
+      border-radius: 16px;
+      padding: 2rem 2rem 2.25rem;
+      box-shadow: var(--shadow);
+    }
+    .contact__form h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      color: var(--navy);
+    }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-full { grid-column: span 2; }
+    .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+    .form-group label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #555;
+      letter-spacing: 0.02em;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      color: var(--dark);
+      background: var(--light);
+      border: 1.5px solid #dde3ea;
+      border-radius: 8px;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+      min-height: 44px;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(59,159,209,.15);
+    }
+    .form-group textarea { min-height: 110px; resize: vertical; }
+    .form-submit { margin-top: 1.25rem; }
+    .form-submit .btn { width: 100%; justify-content: center; font-size: 1.05rem; }
+
+    /* ─── MAP ─── */
+    .map-section { padding: 0; }
+    .map-section iframe {
+      width: 100%;
+      height: 360px;
+      border: none;
+      display: block;
+    }
+
+    /* ─── FOOTER ─── */
+    .footer {
+      background: #0F1E30;
+      color: rgba(255,255,255,.55);
+      padding: 3rem 0 2rem;
+    }
+    .footer__inner {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .footer__brand .nav__logo { margin-bottom: 0.75rem; }
+    .footer__brand p { font-size: 0.88rem; line-height: 1.7; max-width: 280px; }
+    .footer__col h4 {
+      font-family: 'Urbanist', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.35);
+      margin-bottom: 1rem;
+    }
+    .footer__links { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer__links a {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,.55);
+      transition: color .2s;
+      min-height: 28px;
+      display: inline-flex;
+      align-items: center;
+    }
+    .footer__links a:hover { color: var(--orange); }
+    .footer__bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1.5rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+    }
+    .footer__bottom a { color: var(--orange); }
+
+    /* ─── ANIMATIONS ─── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: .1s; }
+    .d2 { transition-delay: .2s; }
+    .d3 { transition-delay: .3s; }
+    .d4 { transition-delay: .4s; }
+    .d5 { transition-delay: .5s; }
+    .d6 { transition-delay: .6s; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .hero__visual { display: none; }
+      .why__grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery__grid { grid-template-columns: repeat(3, 1fr); }
+      .gallery__item:first-child { grid-column: span 2; }
+      .gallery__item:nth-child(2) { grid-column: span 1; }
+    }
+
+    @media (max-width: 768px) {
+      .section { padding: 3.5rem 0; }
+      .services__grid { grid-template-columns: repeat(2, 1fr); }
+      .about__inner { grid-template-columns: 1fr; gap: 2rem; }
+      .about__badge-float { right: 0; bottom: -0.75rem; }
+      .contact__inner { grid-template-columns: 1fr; }
+      .footer__inner { grid-template-columns: 1fr 1fr; }
+      .gallery__grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+      }
+      .gallery__item:first-child { grid-column: span 2; grid-row: span 1; height: 220px; }
+      .gallery__item:nth-child(2) { grid-column: span 2; height: 180px; }
+      .gallery__item { height: 160px; }
+    }
+
+    @media (max-width: 640px) {
+      html, body { overflow-x: hidden; }
+      .section { padding: 3rem 0; }
+      .container { padding: 0 1rem; }
+
+      /* Nav */
+      .nav__links { display: none; }
+      .nav__hamburger { display: flex; }
+
+      /* Hero */
+      .hero { min-height: 100svh; }
+      .hero__actions { flex-direction: column; align-items: flex-start; }
+      .hero__actions .btn { width: 100%; justify-content: center; }
+      .hero__stats { gap: 1.5rem; }
+
+      /* Services */
+      .services__grid { grid-template-columns: 1fr; }
+
+      /* Why */
+      .why__grid { grid-template-columns: 1fr 1fr; gap: 0.85rem; }
+      .why-card { padding: 1.5rem 1rem; }
+
+      /* Gallery */
+      .gallery__grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+      .gallery__item:first-child { grid-column: span 2; height: 200px; grid-row: span 1; }
+      .gallery__item:nth-child(2) { grid-column: span 2; height: 160px; }
+      .gallery__item { height: 140px; }
+
+      /* Contact form */
+      .form-grid { grid-template-columns: 1fr; }
+      .form-full { grid-column: span 1; }
+      .contact__form { padding: 1.5rem; }
+
+      /* Footer */
+      .footer__inner { grid-template-columns: 1fr; gap: 1.5rem; }
+      .footer__bottom { flex-direction: column; text-align: center; }
+    }
+
+    @media (max-width: 428px) {
+      .section { padding: 2.5rem 0; }
+      .hero__badge { font-size: 0.72rem; }
+      .hero__stats { gap: 1.2rem; }
+      .hero__stat-num { font-size: 1.6rem; }
+      .map-section iframe { height: 280px; }
+    }
+
+    @media (max-width: 375px) {
+      .container { padding: 0 1rem; }
+      .nav__logo-sub { display: none; }
+      .why__grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 320px) {
+      h1 { font-size: 1.9rem; }
+      h2 { font-size: 1.5rem; }
+      .nav__logo-text { font-size: 1.35rem; }
+      .nav__logo-sub { display: none; }
+      .hero__stats { flex-direction: column; gap: 1rem; }
+    }
+
+    /* ─── SCROLL TO TOP ─── */
+    .scroll-top {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      width: 44px; height: 44px;
+      background: var(--orange);
+      color: var(--white);
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(242,100,25,.4);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s, transform .3s;
+      z-index: 900;
+    }
+    .scroll-top.show { opacity: 1; pointer-events: auto; }
+    .scroll-top:hover { transform: translateY(-2px); }
+    .scroll-top svg { width: 20px; height: 20px; }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAV ─── -->
+  <nav class="nav" id="nav">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="#" class="nav__logo">
+          <div class="nav__logo-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2C6 2 4 8 4 12c0 3 1.5 5.5 4 7v1a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-1c2.5-1.5 4-4 4-7 0-4-2-10-8-10z"/>
+              <line x1="12" y1="12" x2="12" y2="18"/>
+            </svg>
+          </div>
+          <div>
+            <div class="nav__logo-text">VT Šimek</div>
+            <span class="nav__logo-sub">Vodo · Topo · Uherské Hradiště</span>
+          </div>
+        </a>
+        <ul class="nav__links">
+          <li><a href="#sluzby">Služby</a></li>
+          <li><a href="#o-nas">O nás</a></li>
+          <li><a href="#vyhody">Proč my</a></li>
+          <li><a href="#galerie">Galerie</a></li>
+          <li><a href="#kontakt" class="nav__cta">Kontakt</a></li>
+        </ul>
+        <button class="nav__hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="nav__mobile" id="mobileMenu">
+      <ul>
+        <li><a href="#sluzby" class="mobile-link">Služby</a></li>
+        <li><a href="#o-nas" class="mobile-link">O nás</a></li>
+        <li><a href="#vyhody" class="mobile-link">Proč my</a></li>
+        <li><a href="#galerie" class="mobile-link">Galerie</a></li>
+        <li><a href="#kontakt" class="btn btn-primary mobile-link">Kontaktovat</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ─── HERO ─── -->
+  <section class="hero" id="hero">
+    <div class="hero__bg"></div>
+    <div class="hero__grid-lines"></div>
+    <div class="container">
+      <div class="hero__content">
+        <div class="hero__badge">Na trhu od roku 2018</div>
+        <h1>Voda, teplo<br>a plyn <span>pod kontrolou</span></h1>
+        <p class="hero__sub">Komplexní instalatérství, vytápění, plynoinstalace a čištění kanalizace v Uherském Hradišti a okolí. Odborný tým, moderní technologie, spolehlivé výsledky.</p>
+        <div class="hero__actions">
+          <a href="tel:+420737789088" class="btn btn-primary">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.5a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +420 737 789 088
+          </a>
+          <a href="#sluzby" class="btn btn-outline">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 8 16 12 12 16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+            Naše služby
+          </a>
+        </div>
+        <div class="hero__stats">
+          <div>
+            <div class="hero__stat-num">7<span>+</span></div>
+            <div class="hero__stat-label">let zkušeností</div>
+          </div>
+          <div>
+            <div class="hero__stat-num">9</div>
+            <div class="hero__stat-label">oblastí služeb</div>
+          </div>
+          <div>
+            <div class="hero__stat-num">100<span>%</span></div>
+            <div class="hero__stat-label">spolehlivost</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Service cards right side (desktop) -->
+    <div class="hero__visual">
+      <div class="hero__card fade-up d1">
+        <div class="hero__card-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 2C6 2 4 8 4 12"/><path d="M20 12c0-4-2-10-8-10"/><path d="M4 12c0 3 1.5 5.5 4 7v3h8v-3c2.5-1.5 4-4 4-7"/></svg>
+        </div>
+        <div>
+          <div class="hero__card-title">Vodoinstalace</div>
+          <div class="hero__card-sub">Realizace a opravy, domovní kanalizace</div>
+        </div>
+      </div>
+      <div class="hero__card fade-up d2">
+        <div class="hero__card-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+        </div>
+        <div>
+          <div class="hero__card-title">Vytápění</div>
+          <div class="hero__card-sub">Ústřední i podlahové topení na klíč</div>
+        </div>
+      </div>
+      <div class="hero__card fade-up d3">
+        <div class="hero__card-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div>
+          <div class="hero__card-title">Tepelná čerpadla</div>
+          <div class="hero__card-sub">Kompletní montáž a servis</div>
+        </div>
+      </div>
+      <div class="hero__card fade-up d4">
+        <div class="hero__card-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <div>
+          <div class="hero__card-title">Čištění kanalizace</div>
+          <div class="hero__card-sub">Monitoring a čištění odpadního potrubí</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SERVICES ─── -->
+  <section class="section section--light" id="sluzby">
+    <div class="container">
+      <span class="section-label fade-up">Co nabízíme</span>
+      <h2 class="section-title fade-up d1">Komplexní technické služby</h2>
+      <p class="section-intro fade-up d2">Od čištění kanalizace po solární panely — vše pod jednou střechou. Používáme moderní technologie a klademe důraz na precizní provedení každé zakázky.</p>
+      <div class="services__grid">
+
+        <div class="service-card fade-up d1">
+          <div class="service-card__icon">
+            <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"/><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"/></svg>
+          </div>
+          <h3>Čištění kanalizace</h3>
+          <p>Pravidelný monitoring a důkladné čištění kanalizačního a odpadního potrubí moderní technikou.</p>
+        </div>
+
+        <div class="service-card fade-up d2">
+          <div class="service-card__icon">
+            <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 2v6m0 0c-4 0-8 2-8 6v2h16v-2c0-4-4-6-8-6z"/><path d="M5 20h14v2H5z"/></svg>
+          </div>
+          <h3>Vodoinstalace a kanalizace</h3>
+          <p>Realizace a opravy vnitřních vodovodů a domovní kanalizace — od instalace po pravidelnou údržbu.</p>
+        </div>
+
+        <div class="service-card fade-up d3">
+          <div class="service-card__icon">
+            <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          </div>
+          <h3>Ústřední a podlahové vytápění</h3>
+          <p>Instalace a opravy topných systémů. Podlahové topení s potěrem realizujeme na klíč.</p>
+        </div>
+
+        <div class="service-card fade-up d1">
+          <div class="service-card__icon">
+            <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Plynoinstalace</h3>
+          <p>Návrh, montáž a údržba plynových rozvodů pro domácnosti i firmy s důrazem na bezpečnost.</p>
+        </div>
+
+        <div class="service-card fade-up d2">
+          <div class="service-card__icon">
+            <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          </div>
+          <h3>Jádrové vrtání</h3>
+          <p>Přesné vrtání stavebními konstrukcemi s minimálním narušením okolní struktury.</p>
+        </div>
+
+        <div class="service-card fade-up d3">
+          <div class="service-card__icon">
+            <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+          </div>
+          <h3>Výměny kotlů a bojlerů</h3>
+          <p>Profesionální výměna plynových kotlů a ohřívačů vody s důrazem na kvalitu a životnost.</p>
+        </div>
+
+        <div class="service-card fade-up d1">
+          <div class="service-card__icon">
+            <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 2C6 2 4 8 4 12"/><path d="M20 12c0-4-2-10-8-10"/><path d="M4 12c0 3 1.5 5.5 4 7v3h8v-3c2.5-1.5 4-4 4-7"/></svg>
+          </div>
+          <h3>Úpravny vod</h3>
+          <p>Montáž a servis úpraven vod značek CosmoWATER a Trinnity pro zdravou pitnou vodu doma.</p>
+        </div>
+
+        <div class="service-card fade-up d2">
+          <div class="service-card__icon">
+            <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3>Tepelná čerpadla</h3>
+          <p>Kompletní služby od poradenství, přes montáž až po pravidelný servis tepelných čerpadel.</p>
+        </div>
+
+        <div class="service-card fade-up d3">
+          <div class="service-card__icon">
+            <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+          </div>
+          <h3>Fototermické panely</h3>
+          <p>Solární systémy pro ohřev vody — kompletní instalace, připojení k topení a následná údržba.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ABOUT ─── -->
+  <section class="section" id="o-nas">
+    <div class="container">
+      <div class="about__inner">
+        <div class="about__visual fade-up">
+          <div class="about__img-wrap">
+            <div class="about__img-placeholder">
+              <svg fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 2C6 2 4 8 4 12c0 3 1.5 5.5 4 7v1a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-1c2.5-1.5 4-4 4-7 0-4-2-10-8-10z"/><line x1="12" y1="12" x2="12" y2="18"/><line x1="8" y1="15" x2="16" y2="15"/></svg>
+              <span>Vodo-Topo Šimek</span>
+            </div>
+          </div>
+          <div class="about__badge-float">
+            <div class="about__badge-num">2018</div>
+            <div class="about__badge-label">Rok vzniku</div>
+          </div>
+        </div>
+        <div class="about__text">
+          <span class="section-label fade-up">O firmě</span>
+          <h2 class="section-title fade-up d1">David Šimek —<br>váš spolehlivý partner</h2>
+          <p class="fade-up d2">Firma Vodo-Topo Šimek působí na trhu od roku 2018. Za tu dobu jsme se stali důvěryhodným partnerem pro domácnosti a firmy v Uherském Hradišti a širokém okolí.</p>
+          <p class="fade-up d2">Klademe důraz na profesionální přístup, kvalitní materiály a precizní provedení každé zakázky. Od čištění kanalizace po montáž tepelných čerpadel — vždy s osobní odpovědností.</p>
+          <ul class="about__list fade-up d3">
+            <li>Komplexní řešení od A do Z — jeden kontakt, vše vyřídíme</li>
+            <li>Moderní technologie a osvědčené postupy</li>
+            <li>Transparentní ceny bez skrytých poplatků</li>
+            <li>Autorizovaný prodej a servis CosmoWATER a Trinnity</li>
+            <li>Rychlé termíny a spolehlivé dodržení dohodnutého času</li>
+          </ul>
+          <div class="fade-up d4">
+            <a href="#kontakt" class="btn btn-primary">Nezávazně poptat</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── WHY US ─── -->
+  <section class="section section--dark" id="vyhody">
+    <div class="container">
+      <span class="section-label fade-up" style="color:#ffaa78">Proč VT Šimek</span>
+      <h2 class="section-title fade-up d1" style="color:white">Výhody spolupráce s námi</h2>
+      <p class="section-intro fade-up d2" style="color:rgba(255,255,255,.6)">Vyberte si odborníka, který se vám věnuje osobně a odvádí práci poctivě.</p>
+      <div class="why__grid">
+        <div class="why-card fade-up d1">
+          <div class="why-card__icon">
+            <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h3>Ověřená kvalita</h3>
+          <p>Pracujeme s certifikovanými materiály a postupy, které zaručují dlouhou životnost každé realizace.</p>
+        </div>
+        <div class="why-card fade-up d2">
+          <div class="why-card__icon">
+            <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3>Rychlá odezva</h3>
+          <p>Havarijní situace řešíme přednostně. Na nezávaznou poptávku odpovíme do 24 hodin.</p>
+        </div>
+        <div class="why-card fade-up d3">
+          <div class="why-card__icon">
+            <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <h3>Osobní přístup</h3>
+          <p>David Šimek stojí za každou zakázkou osobně. Žádná anonymita, jen přímá komunikace a odpovědnost.</p>
+        </div>
+        <div class="why-card fade-up d4">
+          <div class="why-card__icon">
+            <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h3>Férové ceny</h3>
+          <p>Jasná kalkulace předem, žádné překvapení na faktuře. Cena odpovídá kvalitě odvedené práce.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── GALLERY ─── -->
+  <section class="section" id="galerie">
+    <div class="container">
+      <span class="section-label fade-up">Naše práce</span>
+      <h2 class="section-title fade-up d1">Ukázky realizací</h2>
+      <p class="section-intro fade-up d2">Každá zakázka je pro nás závazek. Prohlédněte si výběr z našich dokončených projektů.</p>
+      <div class="gallery__grid fade-up d3">
+        <div class="gallery__item">
+          <div class="gallery__thumb g1"></div>
+          <div class="gallery__icon"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2C6 2 4 8 4 12c0 3 1.5 5.5 4 7v1a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-1c2.5-1.5 4-4 4-7 0-4-2-10-8-10z"/></svg></div>
+          <div class="gallery__overlay"><span>Instalace vytápění</span></div>
+        </div>
+        <div class="gallery__item">
+          <div class="gallery__thumb g2"></div>
+          <div class="gallery__icon"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"/></svg></div>
+          <div class="gallery__overlay"><span>Čištění kanalizace</span></div>
+        </div>
+        <div class="gallery__item">
+          <div class="gallery__thumb g3"></div>
+          <div class="gallery__icon"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></div>
+          <div class="gallery__overlay"><span>Solární panely</span></div>
+        </div>
+        <div class="gallery__item">
+          <div class="gallery__thumb g4"></div>
+          <div class="gallery__icon"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg></div>
+          <div class="gallery__overlay"><span>Tepelné čerpadlo</span></div>
+        </div>
+        <div class="gallery__item">
+          <div class="gallery__thumb g5"></div>
+          <div class="gallery__icon"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div class="gallery__overlay"><span>Plynoinstalace</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CONTACT ─── -->
+  <section class="section section--light" id="kontakt">
+    <div class="container">
+      <div class="contact__inner">
+        <div class="contact__info fade-up">
+          <span class="section-label">Kontakt</span>
+          <h2>Ozvěte se nám</h2>
+          <p>Máte zájem o naše služby nebo potřebujete poradit? Zavolejte nebo napište — odpovíme co nejdříve.</p>
+          <div class="contact__items">
+            <div class="contact__item">
+              <div class="contact__item-icon">
+                <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.5a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div>
+                <div class="contact__item-label">Telefon</div>
+                <div class="contact__item-val"><a href="tel:+420737789088">+420 737 789 088</a></div>
+              </div>
+            </div>
+            <div class="contact__item">
+              <div class="contact__item-icon">
+                <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <div class="contact__item-label">E-mail</div>
+                <div class="contact__item-val"><a href="mailto:vtsimek@seznam.cz">vtsimek@seznam.cz</a></div>
+              </div>
+            </div>
+            <div class="contact__item">
+              <div class="contact__item-icon">
+                <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <div class="contact__item-label">Adresa</div>
+                <div class="contact__item-val">Sokolovská 1484<br>686 01 Uherské Hradiště – Mařatice</div>
+              </div>
+            </div>
+            <div class="contact__item">
+              <div class="contact__item-icon">
+                <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+              </div>
+              <div>
+                <div class="contact__item-label">IČ</div>
+                <div class="contact__item-val">073 04 897</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact__form fade-up d2">
+          <h3>Nezávazná poptávka</h3>
+          <form>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="fname">Jméno</label>
+                <input type="text" id="fname" name="fname" placeholder="Jan Novák" autocomplete="name">
+              </div>
+              <div class="form-group">
+                <label for="phone">Telefon</label>
+                <input type="tel" id="phone" name="phone" placeholder="+420 xxx xxx xxx" autocomplete="tel">
+              </div>
+              <div class="form-group form-full">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="jan@email.cz" autocomplete="email">
+              </div>
+              <div class="form-group form-full">
+                <label for="service">Typ služby</label>
+                <select id="service" name="service">
+                  <option value="">Vyberte službu…</option>
+                  <option>Čištění a monitoring kanalizace</option>
+                  <option>Vodoinstalace a domovní kanalizace</option>
+                  <option>Ústřední nebo podlahové vytápění</option>
+                  <option>Plynoinstalace</option>
+                  <option>Jádrové vrtání</option>
+                  <option>Výměna kotle nebo bojleru</option>
+                  <option>Montáž úpravny vod</option>
+                  <option>Tepelné čerpadlo</option>
+                  <option>Fototermické panely</option>
+                  <option>Jiné</option>
+                </select>
+              </div>
+              <div class="form-group form-full">
+                <label for="message">Zpráva</label>
+                <textarea id="message" name="message" placeholder="Popište prosím svoji zakázku nebo dotaz…"></textarea>
+              </div>
+            </div>
+            <div class="form-submit">
+              <button type="submit" class="btn btn-primary">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                Odeslat poptávku
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── MAP ─── -->
+  <div class="map-section">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2622.4!2d17.4587!3d49.0671!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4712e3e2a0d7e4f5%3A0xf0a8e8e8e8e8e8e8!2sSokolovsk%C3%A1%201484%2C%20686%2001%20Uh.%20Hradi%C5%A1t%C4%9B-Ma%C5%99atice!5e0!3m2!1scs!2scz!4v1680000000000!5m2!1scs!2scz"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Mapa – VT Šimek, Sokolovská 1484, Uherské Hradiště">
+    </iframe>
+  </div>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <div class="nav__logo" style="margin-bottom:0.75rem">
+            <div class="nav__logo-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2C6 2 4 8 4 12c0 3 1.5 5.5 4 7v1a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-1c2.5-1.5 4-4 4-7 0-4-2-10-8-10z"/>
+                <line x1="12" y1="12" x2="12" y2="18"/>
+              </svg>
+            </div>
+            <div>
+              <div class="nav__logo-text">VT Šimek</div>
+              <span class="nav__logo-sub">Vodo · Topo · Uherské Hradiště</span>
+            </div>
+          </div>
+          <p>Profesionální instalatérství, vytápění, plynoinstalace a čištění kanalizace. Na trhu od roku 2018, David Šimek.</p>
+        </div>
+        <div class="footer__col">
+          <h4>Služby</h4>
+          <ul class="footer__links">
+            <li><a href="#sluzby">Čištění kanalizace</a></li>
+            <li><a href="#sluzby">Vodoinstalace</a></li>
+            <li><a href="#sluzby">Vytápění</a></li>
+            <li><a href="#sluzby">Plynoinstalace</a></li>
+            <li><a href="#sluzby">Tepelná čerpadla</a></li>
+            <li><a href="#sluzby">Solární panely</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Kontakt</h4>
+          <ul class="footer__links">
+            <li><a href="tel:+420737789088">+420 737 789 088</a></li>
+            <li><a href="mailto:vtsimek@seznam.cz">vtsimek@seznam.cz</a></li>
+            <li><a href="#kontakt">Sokolovská 1484<br>686 01 Uherské Hradiště</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2024–2025 David Šimek | IČ: 073 04 897</span>
+        <span>Web: <a href="https://vtsimek.cz">vtsimek.cz</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to top -->
+  <button class="scroll-top" id="scrollTop" aria-label="Nahoru">
+    <svg fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+  </button>
+
+  <script>
+    // ── Nav scroll effect ──
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 30);
+    }, { passive: true });
+
+    // ── Hamburger menu ──
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    // ── Scroll to top ──
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('show', window.scrollY > 400);
+    }, { passive: true });
+    scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // ── Fade-up IntersectionObserver ──
+    const fadeEls = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    fadeEls.forEach(el => observer.observe(el));
+
+    // ── Active nav link highlight ──
+    const sections = document.querySelectorAll('section[id], div[id]');
+    const navLinks = document.querySelectorAll('.nav__links a:not(.nav__cta)');
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            link.style.color = link.getAttribute('href') === '#' + entry.target.id
+              ? 'white' : '';
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+    sections.forEach(s => sectionObserver.observe(s));
+
+    // ── Form submit (prevent default, show confirmation) ──
+    document.querySelector('form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = this.querySelector('button[type=submit]');
+      btn.textContent = '✓ Poptávka odeslána!';
+      btn.style.background = '#27ae60';
+      btn.style.borderColor = '#27ae60';
+      setTimeout(() => {
+        btn.innerHTML = '<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Odeslat poptávku';
+        btn.style.background = '';
+        btn.style.borderColor = '';
+        this.reset();
+      }, 3000);
+    });
+  </script>
+</body>
+</html>
