@@ -15,7 +15,7 @@
     body {
       font-family: 'DM Sans', sans-serif;
       font-size: 16px;
-      color: #0F2424;
+      color: #0D1B2A;
       background: #fff;
       overflow-x: hidden;
       line-height: 1.65;
@@ -25,15 +25,15 @@
 
     /* ─── VARIABLES ─── */
     :root {
-      --navy:   #0C3D3D;
-      --orange: #E8A020;
-      --blue:   #18A8B8;
-      --light:  #EEF6F7;
-      --dark:   #0F2424;
+      --navy:   #14375A;
+      --orange: #E04E1A;
+      --blue:   #2E86C1;
+      --light:  #F0F4F8;
+      --dark:   #0D1B2A;
       --muted:  #6B7280;
       --white:  #ffffff;
       --radius: 12px;
-      --shadow: 0 4px 24px rgba(12,61,61,.10);
+      --shadow: 0 4px 24px rgba(20,55,90,.10);
     }
 
     /* ─── TYPOGRAPHY ─── */
@@ -83,7 +83,7 @@
       color: var(--white);
       border-color: var(--orange);
     }
-    .btn-primary:hover { background: #c98818; border-color: #c98818; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(232,160,32,.35); }
+    .btn-primary:hover { background: #bf3f12; border-color: #bf3f12; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(224,78,26,.35); }
     .btn-outline {
       background: transparent;
       color: var(--white);
@@ -96,7 +96,7 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 1000;
-      background: rgba(12,61,61,.97);
+      background: rgba(20,55,90,.97);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(255,255,255,.08);
       transition: box-shadow .3s;
@@ -163,7 +163,7 @@
       display: inline-flex;
       align-items: center;
     }
-    .nav__cta:hover { background: #c98818 !important; }
+    .nav__cta:hover { background: #bf3f12 !important; }
 
     /* Hamburger */
     .nav__hamburger {
@@ -233,8 +233,8 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 80% 60% at 70% 40%, rgba(24,168,184,.18) 0%, transparent 65%),
-        radial-gradient(ellipse 50% 40% at 20% 80%, rgba(232,160,32,.12) 0%, transparent 60%);
+        radial-gradient(ellipse 80% 60% at 70% 40%, rgba(46,134,193,.18) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 40% at 20% 80%, rgba(224,78,26,.12) 0%, transparent 60%);
     }
     .hero__grid-lines {
       position: absolute;
@@ -253,9 +253,9 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      background: rgba(232,160,32,.15);
-      border: 1px solid rgba(232,160,32,.35);
-      color: #fde68a;
+      background: rgba(224,78,26,.15);
+      border: 1px solid rgba(224,78,26,.35);
+      color: #ffb49a;
       font-size: 0.82rem;
       font-weight: 600;
       padding: 0.35rem 0.9rem;
@@ -338,7 +338,7 @@
     .hero__card:hover { background: rgba(255,255,255,.1); transform: translateX(-4px); }
     .hero__card-icon {
       width: 44px; height: 44px;
-      background: rgba(232,160,32,.2);
+      background: rgba(224,78,26,.2);
       border-radius: 10px;
       display: flex;
       align-items: center;
@@ -386,7 +386,7 @@
     .service-card:hover::before { transform: scaleX(1); }
     .service-card__icon {
       width: 52px; height: 52px;
-      background: rgba(24,168,184,.1);
+      background: rgba(46,134,193,.1);
       border-radius: 12px;
       display: flex;
       align-items: center;
@@ -411,7 +411,7 @@
       border-radius: 16px;
       overflow: hidden;
       aspect-ratio: 4/3;
-      background: linear-gradient(135deg, #0C3D3D 0%, #18A8B8 100%);
+      background: linear-gradient(135deg, #14375A 0%, #2E86C1 100%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -434,7 +434,7 @@
       border-radius: var(--radius);
       padding: 1.1rem 1.4rem;
       text-align: center;
-      box-shadow: 0 8px 30px rgba(232,160,32,.4);
+      box-shadow: 0 8px 30px rgba(224,78,26,.4);
     }
     .about__badge-num {
       font-family: 'Urbanist', sans-serif;
@@ -467,7 +467,7 @@
       content: '';
       width: 20px; height: 20px;
       min-width: 20px;
-      background: rgba(24,168,184,.15);
+      background: rgba(46,134,193,.15);
       border-radius: 50%;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233B9FD1' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
       background-size: 12px;
@@ -495,13 +495,13 @@
       font-family: 'Urbanist', sans-serif;
       font-size: 3.5rem;
       font-weight: 800;
-      color: rgba(24,168,184,.25);
+      color: rgba(46,134,193,.25);
       line-height: 1;
       margin-bottom: 0.75rem;
     }
     .why-card__icon {
       width: 56px; height: 56px;
-      background: rgba(232,160,32,.15);
+      background: rgba(224,78,26,.15);
       border-radius: 14px;
       display: flex;
       align-items: center;
@@ -524,7 +524,7 @@
       position: relative;
       cursor: pointer;
       aspect-ratio: 1;
-      background: #0a3030;
+      background: #091a2e;
     }
     .gallery__item img {
       width: 100%; height: 100%;
@@ -536,7 +536,7 @@
     .gallery__overlay {
       position: absolute;
       inset: 0;
-      background: rgba(12,61,61,.55);
+      background: rgba(20,55,90,.55);
       opacity: 0;
       transition: opacity .3s;
       display: flex;
@@ -689,7 +689,7 @@
     .form-group select:focus,
     .form-group textarea:focus {
       border-color: var(--blue);
-      box-shadow: 0 0 0 3px rgba(24,168,184,.15);
+      box-shadow: 0 0 0 3px rgba(46,134,193,.15);
     }
     .form-group textarea { min-height: 110px; resize: vertical; }
     .form-submit { margin-top: 1.25rem; }
@@ -706,7 +706,7 @@
 
     /* ─── FOOTER ─── */
     .footer {
-      background: #071F1F;
+      background: #07111e;
       color: rgba(255,255,255,.55);
       padding: 3rem 0 2rem;
     }
@@ -851,7 +851,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 16px rgba(232,160,32,.4);
+      box-shadow: 0 4px 16px rgba(224,78,26,.4);
       opacity: 0;
       pointer-events: none;
       transition: opacity .3s, transform .3s;
@@ -1069,7 +1069,7 @@
   <!-- ─── WHY US ─── -->
   <section class="section section--dark" id="vyhody">
     <div class="container">
-      <span class="section-label fade-up" style="color:#fde68a">Proč VT Šimek</span>
+      <span class="section-label fade-up" style="color:#ffb49a">Proč VT Šimek</span>
       <h2 class="section-title fade-up d1" style="color:white">Výhody spolupráce s námi</h2>
       <p class="section-intro fade-up d2" style="color:rgba(255,255,255,.6)">Vyberte si odborníka, který se vám věnuje osobně a odvádí práci poctivě.</p>
       <div class="why__grid">
